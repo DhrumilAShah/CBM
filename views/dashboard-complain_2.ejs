@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CBM</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CBM">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/fonts/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <meta name="msapplication-config" content="/images/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- ./ favicon-->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/style-responsive.css">
+    <link rel="stylesheet" href="/stylesheets/animate.min.css">
+    <link rel="stylesheet" href="/stylesheets/vertical-rhythm.min.css">
+    <link rel="stylesheet" href="/stylesheets/owl.carousel.css">
+    <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="all">
+      <!-- header-->
+      <div class="header header-fixed">
+        <div class="header-inner">
+          <div class="header-logo">
+            <a href="dashboard" class="logo">
+              <img src="/images/logo-white.png" alt=""/>
+            </a>
+          </div>
+          <div  class="inner-nav desktop-nav nav">
+            <ul class="clearlist scroll-nav local-scroll">
+            <li class="active"><a href="dashboard">Complain</a></li>
+            <li><a href="/accounts">Accounts</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/dashboard/logout">Logout</a></li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+      <!-- ./ header-->
+      <!-- content-->
+      <div class="page page-dashboard page1">
+        <div class="page-nav page-nav-fixed">
+          <div class="page-nav-inner">
+            <ul class="page-nav__list">
+              <li class="active pendingBtn">
+                <a href="#Pending">
+                  Pending
+                </a>
+              </li>
+              <li class="progressBtn">
+                <a href="#Progress">
+                  In Progress
+                </a>
+              </li>
+              <li class="closedBtn">
+                <a href="#Closed">
+                  Closed
+                </a>
+              </li>
+            </ul>
+            <div class="btn-group">
+            </div>
+            <a href="/dashboard/report" class="btn btn-accent hidden-xs">Generate Report</a>&nbsp;&nbsp;&nbsp;
+            <a href="task-create" class="btn btn-accent hidden-xs">Add Complain</a>
+            <a href="task-create" class="btn btn-accent visible-xs">&plus;</a>
+          </div>
+        </div>
+
+
+        <section id="Pending">
+          <div class="dashboard-col-head dc-des">Description</div>
+          <div class="dashboard-col-head dc-cat">Category</div>
+          <div class="dashboard-col-head dc-dat">Date</div>
+          <div class="dashboard-col-head dc-client">Client</div>
+          <div class="page-content">
+            <% for(var i=0; i < pending.length; i++) { %>
+            <div class="dashboard-row">
+               <div class="dashboard-sub-row">
+                <div class="dashboard-col dc-text">
+                  <%= pending[i]['title'] %>
+                </div>
+                <div class="dashboard-col dc-category">
+                <a href="#"><%= pending[i]['category'] %></a>
+                </div>
+                <div class="dashboard-col dc-date"><%= pending[i]['date'] %></div>
+                <div class="dashboard-col dc-member"><%= pending[i]['name'] %>
+                  <div title="done task"  onclick="remove(this.id,'progress')" id="<%= pending[i]['complaint_id'] %>" class="dashboard-avatar">
+                    <img src="/images/image.png" alt="">
+                  </div>
+                </div>
+              </div>
+               <div class="dashboard-sub-row">
+                 <div class="details">
+                  <div class="lead">
+                    <%= pending[i]['details'] %>
+                  </div>
+                  <div class="form-group">
+                    <label>Engineer Name</label>
+                    <select class="form-control form-control-small">
+                        <% for(var j=0; j < engineerName.length; j++) { %>
+                        <option value="<%= engineerName[j]['id']%>"><%= engineerName[j]['name']%></option>
+                        <%}%>
+                    </select>
+                    <a href="http://localhost:3000/dashboard#Progress" onclick="remove(this.id,'progress')" id="<%= pending[i]['complaint_id'] %>" class="btn btn-accent">Assign</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <% } %>
+          </div>
+        </section>
+        <section id="Progress">
+          <div class="dashboard-col-head dc-des">Description</div>
+          <div class="dashboard-col-head dc-cat">Category</div>
+          <div class="dashboard-col-head dc-dat">Date</div>
+          <div class="dashboard-col-head dc-client">Client</div>
+          <div class="page-content">
+            <% for(var i=0; i < progress.length; i++) { %>
+            <div class="dashboard-row">
+              <div class="dashboard-sub-row">
+                <div class="dashboard-col dc-text"><%= progress[i]['title'] %></div>
+                <div class="dashboard-col dc-category"><%= progress[i]['category'] %></div>
+                <div class="dashboard-col dc-date"><%= progress[i]['date'] %></div>
+                <div class="dashboard-col dc-member"><%= progress[i]['name'] %>
+                  <div title="done task" class="dashboard-avatar" onclick="remove(this.id,'closed')" id="<%= progress[i]['complaint_id'] %>">
+                    <img src="/images/image.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-sub-row">
+              </div>
+            </div>
+            <% } %>
+
+          </div>
+        </section>
+        <section id="Closed">
+          <div class="dashboard-col-head dc-des">Description</div>
+          <div class="dashboard-col-head dc-cat">Category</div>
+          <div class="dashboard-col-head dc-dat">Date</div>
+          <div class="dashboard-col-head dc-client">Client</div>
+          <div class="page-content">
+            <% for(var i=0; i < closed.length; i++) { %>
+            <div class="dashboard-row">
+              <div class="dashboard-sub-row">
+                <div class="dashboard-col dc-text"><%= closed[i]['title'] %></div>
+                <div class="dashboard-col dc-category"><a href="#"><%= closed[i]['category'] %></a></div>
+                <div class="dashboard-col dc-date"><%= closed[i]['date'] %></div>
+                <div class="dashboard-col dc-member"><%= closed[i]['name'] %>
+                  <div title="done task" class="dashboard-avatar">
+                    <img src="/images/image.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-sub-row">
+
+              </div>
+            </div>
+            <% } %>
+
+          </div>
+        </section>
+
+
+      </div>
+
+      <!-- ./ content-->
+      <!-- Foter -->
+            <footer class="page-section bg-gray-lighter footer pb-30 pt-30">
+                <div class="container">
+
+                    <!-- Footer Logo -->
+                    <div class="local-scroll mb-10 wow fadeInUp" data-wow-duration="1.5s">
+                        <a href="#top">
+                          <img src="/images/logo-white.png" width="78" height="36" alt="" /></a>
+                    </div>
+                    <!-- End Footer Logo -->
+
+                    <!-- Social Links -->
+                    <div class="footer-social-links mb-50 mb-xs-60">
+                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+                        <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                    <!-- End Social Links -->
+
+                    <!-- Footer Text -->
+                    <div class="footer-text">
+
+                        <!-- Copyright -->
+                        <div class="footer-copy font-alt">
+                            &copy;Kunj Sanghavi.
+                        </div>
+                        <!-- End Copyright -->
+
+                        <div class="footer-made">
+                           " Made with love for great people "
+                        </div>
+
+                    </div>
+                    <!-- End Footer Text -->
+
+                 </div>
+                 <!-- Top Link -->
+                 <div class="local-scroll">
+                     <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+                 </div>
+                 <!-- End Top Link -->
+
+            </footer>
+<!-- End Foter -->
+      <!-- ./ all content-->
+    </div>
+    <!-- scripts-->
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/slick.min.js"></script>
+    <script src="/javascripts/main.min.js"></script>
+
+        <script type="text/javascript">
+
+      $(".pendingBtn").click(function(){
+          $('.pendingBtn').addClass('active');
+          $('.progressBtn').removeClass('active');
+          $('.closedBtn').removeClass('active');
+          $('#Pending').show();
+          $('#Progress').hide();
+          $('#Closed').hide();
+      });
+      $(".progressBtn").click(function(){
+          $('.pendingBtn').removeClass('active');
+          $('.progressBtn').addClass('active');
+          $('.closedBtn').removeClass('active');
+          $('#Pending').hide();
+          $('#Progress').show();
+          $('#Closed').hide();
+      });
+      $(".closedBtn").click(function(){
+          $('.pendingBtn').removeClass('active');
+          $('.progressBtn').removeClass('active');
+          $('.closedBtn').addClass('active');
+          $('#Pending').hide();
+          $('#Progress').hide();
+          $('#Closed').show();
+      });
+
+      function remove(id,stat){
+        $.post( "/dashboard/"+id,{status:stat}).done(function( data ) {
+          alert(data);
+          location.reload();
+        });
+      }
+    </script>
+        <script type="text/javascript">
+       function preventBack(){window.history.forward();}
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload=function(){null};
+    </script>
+  </body>
+    <!-- ./ scripts-->
+  </body>
+</html>

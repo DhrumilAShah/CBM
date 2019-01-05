@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CBM</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Trinity">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- ./ favicon-->
+        <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/style-responsive.css">
+    <link rel="stylesheet" href="/stylesheets/animate.min.css">
+    <link rel="stylesheet" href="/stylesheets/vertical-rhythm.min.css">
+    <link rel="stylesheet" href="/stylesheets/owl.carousel.css">
+    <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="all">
+      <!-- header-->
+      <div class="header">
+        <div class="header-inner">
+          <div class="header-logo">
+            <a href="dashboard" class="logo">
+              <img src="/images/logo-white.png" alt=""/>
+            </a>
+          </div>
+          <div  class="inner-nav desktop-nav nav">
+            <ul class="clearlist scroll-nav local-scroll">
+            <li class="active"><a href="/dashboard">Complain</a></li>
+            <li><a href="/accounts">Accounts</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/dashboard/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- ./ header-->
+      <!-- content-->
+      <div class="page page-member-details">
+        <div class="page-nav">
+          <div class="page-nav-inner">
+            <div class="header-logged">
+              <a href="dashboard-forme.html">
+                Jack M.
+                <span class="avatar">
+                  <img src="images/image.png" alt="">
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="page-header">
+          <div class="container-fluid container-fluid2">
+            <h2><%= userDetails[0]['name']%></h2>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="member-avatar"><img src="images/image.png" alt=""></div>
+        </div>
+        <div class="page-content">
+          <div class="member-table">
+            <div class="member-row">
+              <div class="member-col">E-mail</div>
+              <div class="member-col"><a href="mailto: team@creat.net"><%= userDetails[0]['email']%></a></div>
+            </div>
+            <div class="member-row">
+              <div class="member-col">Web Site</div>
+              <div class="member-col"><a href="#"><%= userDetails[0]['website']%></a></div>
+            </div>
+            <div class="member-row">
+              <div class="member-col">Phone</div>
+              <div class="member-col"><%= userDetails[0]['Phone_no']%></div>
+            </div>
+            <div class="member-row">
+              <div class="member-col">City</div>
+              <div class="member-col"><%= userDetails[0]['city']%></div>
+            </div>
+            <div class="member-row">
+              <div class="member-col">Skills</div>
+              <div class="member-col">Web Design, HTML, CSS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./ content-->
+      <!-- Foter -->
+            <footer class="page-section bg-gray-lighter footer pb-30 pt-30">
+                <div class="container">
+
+                    <!-- Footer Logo -->
+                    <div class="local-scroll mb-10 wow fadeInUp" data-wow-duration="1.5s">
+                        <a href="#top">
+                          <img src="/images/logo-white.png" width="78" height="36" alt="" /></a>
+                    </div>
+                    <!-- End Footer Logo -->
+
+                    <!-- Social Links -->
+                    <div class="footer-social-links mb-50 mb-xs-60">
+                        <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+                        <a href="#" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                    <!-- End Social Links -->
+
+                    <!-- Footer Text -->
+                    <div class="footer-text">
+
+                        <!-- Copyright -->
+                        <div class="footer-copy font-alt">
+                            &copy;Kunj Sanghavi.
+                        </div>
+                        <!-- End Copyright -->
+
+                        <div class="footer-made">
+                           " Made with love for great people "
+                        </div>
+
+                    </div>
+                    <!-- End Footer Text -->
+
+                 </div>
+                 <!-- Top Link -->
+                 <div class="local-scroll">
+                     <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+                 </div>
+                 <!-- End Top Link -->
+
+            </footer>
+<!-- End Foter -->
+      <!-- ./ all content-->
+    </div>
+    <!-- scripts-->
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/slick.min.js"></script>
+    <script src="/javascripts/main.min.js"></script>
+        <script type="text/javascript">
+       function preventBack(){window.history.forward();}
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload=function(){null};
+    </script>
+    <!-- ./ scripts-->
+  </body>
+</html>
